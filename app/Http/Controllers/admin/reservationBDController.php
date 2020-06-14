@@ -27,7 +27,10 @@ class reservationBDController extends Controller
      */
     public function create()
     {
-        //
+      return view('admin.reservation.create', [
+        'reservation' => [],
+        'delimiter'=> ''
+      ]);
     }
 
     /**
@@ -38,8 +41,12 @@ class reservationBDController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Reservation::create($request->all());
+
+        return redirect()->route('admin.reservation.index');
+
     }
+
 
     /**
      * Display the specified resource.

@@ -24,13 +24,19 @@
   <tbody>
     @forelse ($reservations as $reservation)
       <tr>
-        <td>{{$reservation->creat_reser}}</td>
+        <td>{{$reservation->created_at}}</td>
         <td>{{$reservation->arrival}}</td>
         <td>{{$reservation->booking_number}}</td>
-        <td>{{$reservation->stat}}</td>
+        <td>
+           @if ($reservation->stat == 0) Ожидание подтверждения @endif
+           @if ($reservation->stat == 1) Подверждена @endif
+        </td>
         <td>{{$reservation->user}}</td>
         <td>
-          <a href="{{route('admin.reservation.edit', ['id'=>$reservation->id])}}"> <i class="fa fa-edit"></i> </a>
+          {{ csrf_field() }}
+
+
+          <a class="btn btn-default" href="{{route('admin.reservation.edit', $reservation)}}"> <i class="fa fa-edit"></i> </a>
         </td>
       </tr>
     @empty

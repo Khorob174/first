@@ -17,6 +17,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth']], 
   Route::resource('/reservation','reservationBDController', ['as'=>'admin']);
 });
 
+
 Route::get('/', function () {
     return view('welcome');
 });

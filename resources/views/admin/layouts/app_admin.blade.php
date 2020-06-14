@@ -38,8 +38,8 @@
                       <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true">Бронь</a>
                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Создать</a>
-                          <a class="dropdown-item" href="#">Список брони</a>
+                          <a class="dropdown-item" href="{{route('admin.reservation.create')}}">Создать</a>
+                          <a class="dropdown-item" href="{{route('admin.reservation.index')}}">Список брони</a>
                           <a class="dropdown-item" href="#">Получить бронь по ID</a>
                           <a class="dropdown-item" href="#">Список брони пользователя</a>
                         </div>
@@ -84,7 +84,7 @@
 
 
             @yield('content')
-        
+
     </div>
 </body>
 </html>

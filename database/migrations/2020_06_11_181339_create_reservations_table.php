@@ -19,7 +19,7 @@ class CreateReservationsTable extends Migration
             $table->string('arrival');
             $table->string('booking_number');
             $table->tinyInteger('stat')->nullable();
-            $table->integer('user');
+            $table->string('user');
             $table->string('slug')->unique();
             $table->timestamps();
         });
