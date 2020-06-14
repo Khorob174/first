@@ -16,6 +16,10 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth']], 
   Route::get('/', 'reservationController@reservation')->name('admin.index');
   Route::resource('/reservation','reservationBDController', ['as'=>'admin']);
 });
+Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['web']], function(){
+  Route::resource('/reservation','reservationBDController', ['as'=>'admin','only' => ['create', 'store']]);
+});
+
 
 
 Route::get('/', function () {

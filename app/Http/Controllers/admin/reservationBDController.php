@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class reservationBDController extends Controller
 {
@@ -42,8 +43,9 @@ class reservationBDController extends Controller
     public function store(Request $request)
     {
         Reservation::create($request->all());
-
+        if (!Auth::guest())
         return redirect()->route('admin.reservation.index');
+        else return redirect()->intended('/home');
 
     }
 
