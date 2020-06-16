@@ -17,7 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->timestamp('creat_reser')->nullable();
             $table->string('arrival');
-            $table->string('booking_number');
+            $table->int('booking_number');
             $table->tinyInteger('stat')->nullable();
             $table->int('user');
             $table->string('slug')->unique();

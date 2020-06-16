@@ -16,9 +16,9 @@
 <input type="text" class="form-control" name="booking_number" placeholder="Номер" value="{{$reservation->booking_number ?? ""}}" required>
 <label for="">ФИО</label>
 @guest
-<input type="text" class="form-control" name="user" placeholder="Фамилия, Имя, Отчество" value="{{$reservation->user ?? "" }}">
+
 @else
-<input type="text" class="form-control" name="user" placeholder="Фамилия, Имя, Отчество" value="{{$reservation->user ?? Auth::user()->id }}">
+<input type="text" class="form-control" name="user" placeholder="ID пользователя" value="{{$reservation->user ?? Auth::user()->id }}">
 @endguest
 <label for="">Slug</label>
 <input type="text" class="form-control" name="slug" placeholder="Автоматическая генерация" value="{{$reservation->slug ?? ""}}" readonly="">

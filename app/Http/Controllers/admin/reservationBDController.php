@@ -14,11 +14,31 @@ class reservationBDController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+      if($request->input("sort")==null)
+      {
         return view('admin.reservation.index', [
-          'reservations' => Reservation::paginate(10)->sortBy('stat')
+          'reservations' => Reservation::paginate(10),
+          'abc'=>''
         ]);
+      }else{
+        if($request->input("abc")==null){
+          return view('admin.reservation.index', [
+            'reservations' => Reservation::orderBy($request->input("sort"))->paginate(10),
+            'sort'=>$request->input("sort"),
+            'abc'=>''
+            ]);
+        }else{
+          return view('admin.reservation.index', [
+            'reservations' => Reservation::orderBy($request->input("sort"),$request->input("abc"))->paginate(10),
+            'sort'=>$request->input("sort"),
+            'abc'=>$request->input("abc")
+        ]);
+        }
+      }
+
+
     }
 
 
@@ -46,7 +66,7 @@ class reservationBDController extends Controller
         Reservation::create($request->all());
         if (!Auth::guest())
         return redirect()->route('admin.reservation.index');
-        else return redirect()->intended('/home');
+        else return redirect('/');
 
     }
 
