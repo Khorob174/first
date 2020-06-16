@@ -88,7 +88,7 @@
 
                   @include('admin.reservation.partials.form')
                 </form>
-                  
+
             </div>
         </div>
     </body>
