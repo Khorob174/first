@@ -17,9 +17,10 @@ class reservationBDController extends Controller
     public function index()
     {
         return view('admin.reservation.index', [
-          'reservations' => Reservation::paginate(10)
+          'reservations' => Reservation::paginate(10)->sortBy('stat')
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -58,7 +59,18 @@ class reservationBDController extends Controller
      */
     public function show(Reservation $reservation)
     {
-        //
+
+        if($reservation){
+          return view('admin.reservation.show', [
+          'reservations' => Reservation::find($reservation)
+          ]);
+        }
+        else {
+          return view('admin.reservation.show', [
+          'reservations' => []
+            ]);
+        }
+
     }
 
     /**
@@ -69,7 +81,10 @@ class reservationBDController extends Controller
      */
     public function edit(Reservation $reservation)
     {
-        //
+      return view('admin.reservation.edit', [
+        'reservation' => $reservation,
+        'delimiter'=> ''
+      ]);
     }
 
     /**
@@ -81,7 +96,9 @@ class reservationBDController extends Controller
      */
     public function update(Request $request, Reservation $reservation)
     {
-        //
+        $reservation->update($request->except('slug'));
+
+        return redirect()->route('admin.reservation.index');
     }
 
     /**
@@ -92,6 +109,8 @@ class reservationBDController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+
+        return redirect()->route('admin.reservation.index');
     }
 }

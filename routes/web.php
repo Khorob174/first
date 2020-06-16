@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth']], function(){
   Route::get('/', 'reservationController@reservation')->name('admin.index');
+  Route::post('/show', 'reservationController@show')->name('admin.show');
+  Route::get('/show', 'reservationController@show')->name('admin.show');
+  //Route::post('/show')->name('admin.show');
   Route::resource('/reservation','reservationBDController', ['as'=>'admin']);
 });
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['web']], function(){

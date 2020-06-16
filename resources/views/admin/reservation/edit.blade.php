@@ -5,7 +5,7 @@
 <div class="container">
 
   @component('admin.components.breadcrumb')
-    @slot('title') Создать бронь @endslot
+    @slot('title') Редактировать бронь @endslot
     @slot('parent') Главная @endslot
     @slot('active') Бронь @endslot
   @endcomponent
