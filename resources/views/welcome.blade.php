@@ -83,7 +83,11 @@
                 <div class="title m-b-md">
                     Сервис бронирования номеров
                 </div>
+                <form class="form-horizontal" action="{{route('admin.reservation.store')}}" method="post">
+                  {{ csrf_field() }}
 
+                  @include('admin.reservation.partials.form')
+                </form>
 
             </div>
         </div>

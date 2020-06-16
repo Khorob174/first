@@ -14,4 +14,9 @@ class reservationController extends Controller
           'reservations' => Reservation::paginate(10)
       ]);
     }
+    public function show(request $reservation){
+      return view('admin.reservation.show',[
+          'reservations' => Reservation::find($reservation)
+      ]);
+    }
 }

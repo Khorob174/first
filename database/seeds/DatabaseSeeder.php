@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+          DB::table('reservations')->insert([
+          'arrival'=> rand(0,30).'/'.rand(0,12).'/2020',
+          'booking_number'=> rand(0,30),
+          'stat'=>'0',
+          'slug'=>  rand(0,30) . "-" . date("Y-m-d-H-i-s"),
+          'created_at'=>date("Y-m-d H:i:s"),
+          'updated_at'=>date("Y-m-d H:i:s")
+      ]);
     }
 }
