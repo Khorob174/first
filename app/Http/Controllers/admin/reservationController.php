@@ -19,4 +19,10 @@ class reservationController extends Controller
           'reservations' => Reservation::find($reservation)
       ]);
     }
+    public function user(request $reservation){
+      return view('admin.reservation.user',[
+          'reservations2' => Reservation::orderBy('id','desc')->where('user',$reservation->input("user"))->paginate(),
+          'user' => $reservation->input("user")
+      ]);
+    }
 }

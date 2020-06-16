@@ -79,17 +79,7 @@ class reservationBDController extends Controller
      */
     public function show(Reservation $reservation)
     {
-
-        if($reservation){
-          return view('admin.reservation.show', [
-          'reservations' => Reservation::find($reservation)
-          ]);
-        }
-        else {
-          return view('admin.reservation.show', [
-          'reservations' => []
-            ]);
-        }
+    
 
     }
 

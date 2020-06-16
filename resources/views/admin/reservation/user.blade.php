@@ -15,13 +15,12 @@
 
 
   <hr />
-  <form class="form-horizontal" action="{{route('admin.show')}}" method="post">
+  <form class="form-horizontal" action="{{route('admin.user')}}" method="post">
     {{ csrf_field() }}
-    <label for="">ID брони</label>
-    <input type="text" class="form-control" name="id" placeholder="Номер" required>
+    <label for="">ID жильца</label>
+    <input type="text" class="form-control" name="user" placeholder="Номер" value="{{$user ?? ""}}" required>
   <hr />
-  <!--  <input class="btn btn-primary" type="submit" href="{{route('admin.reservation.show', 2)}}" value="Получить бронь по ID"> !-->
-  <input class="btn btn-primary" type="submit" value="Получить бронь по ID">
+  <input class="btn btn-primary" type="submit" value="Получить список по ID жильца">
   </form>
   <hr />
     <table class="table table-striped">
@@ -34,7 +33,7 @@
       <th class="text-right">Действие</th>
     </thead>
     <tbody>
-      @forelse ($reservations as $reservation)
+      @forelse ($reservations2 as $reservation)
         <tr>
           <td>{{$reservation->created_at}}</td>
           <td>{{$reservation->arrival}}</td>
@@ -64,6 +63,15 @@
         </tr>
       @endforelse
     </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">
+          <ul class="pagination pull-right">
+              {{$reservations2->links()}}
+          </ul>
+        </td>
+      </tr>
+    </tfoot>
     </table>
 </div>
 

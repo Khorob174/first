@@ -44,7 +44,7 @@
                           <a class="dropdown-item" href="{{route('admin.reservation.create')}}">Создать</a>
                           <a class="dropdown-item" href="{{route('admin.reservation.index')}}">Список брони</a>
                           <a class="dropdown-item" href="{{route('admin.show')}}">Получить бронь по ID</a>
-                          <a class="dropdown-item" href="#">Список брони пользователя</a>
+                          <a class="dropdown-item" href="{{route('admin.user')}}">Получить бронь по ID жильца</a>
                           @endguest
                         </div>
                       </li>
